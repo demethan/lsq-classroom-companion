@@ -44,12 +44,36 @@
     .sample-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     .sample { background: var(--panel-2); color: var(--text); border: 1px solid rgba(255,255,255,0.10); }
     .stage { min-height: 420px; display: flex; flex-direction: column; gap: 14px; }
-    .video-shell { flex: 1; min-height: 270px; display: grid; place-items: center; background: #08101b; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+    .video-shell { flex: 1; min-height: 270px; display: grid; place-items: center; background: radial-gradient(circle at top, rgba(117,213,255,0.13), transparent 38%), #08101b; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
     .video-shell img { max-width: min(100%, 520px); max-height: 360px; width: auto; height: auto; image-rendering: auto; }
-    .asl-demo { width: min(94%, 560px); display: grid; gap: 12px; justify-items: center; padding: 12px; }
-    .asl-demo img { border-radius: 18px; background: #050b12; border: 1px solid rgba(117,213,255,0.22); box-shadow: 0 16px 38px rgba(0,0,0,0.35); }
-    .asl-note { width: 100%; border-radius: 16px; padding: 12px 14px; background: rgba(255,209,102,0.12); border: 1px solid rgba(255,209,102,0.32); color: var(--muted); font-size: .95rem; }
+    .asl-demo { width: min(96%, 620px); display: grid; grid-template-columns: minmax(220px, 0.9fr) minmax(210px, 1fr); gap: 14px; align-items: stretch; padding: 14px; }
+    .avatar-frame { position: relative; display: grid; place-items: center; min-height: 300px; border-radius: 24px; overflow: hidden; background: radial-gradient(circle at 50% 15%, rgba(142,230,161,0.22), transparent 34%), linear-gradient(180deg, #17243a, #070d16); border: 1px solid rgba(117,213,255,0.28); box-shadow: 0 18px 42px rgba(0,0,0,0.38); }
+    .avatar-frame::before { content: ""; position: absolute; inset: 18px; border-radius: 999px 999px 42px 42px; background: linear-gradient(180deg, rgba(238,244,255,0.06), rgba(117,213,255,0.04)); border: 1px solid rgba(255,255,255,0.08); }
+    .avatar-frame::after { content: "Aperçu avatar"; position: absolute; top: 12px; left: 14px; padding: 6px 10px; border-radius: 999px; background: rgba(8,16,27,0.72); color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .03em; }
+    .avatar-target { position: relative; z-index: 1; width: min(88%, 270px); height: 240px; border-radius: 28px; background: linear-gradient(180deg, rgba(238,244,255,0.10), rgba(117,213,255,0.08)); border: 1px solid rgba(255,255,255,0.12); overflow: hidden; }
+    .avatar-target .halo { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); width: 128px; height: 128px; border-radius: 50%; background: rgba(117,213,255,0.16); filter: blur(2px); }
+    .avatar-target .head { position: absolute; left: 50%; top: 38px; transform: translateX(-50%); width: 76px; height: 76px; border-radius: 50%; background: #e9c7a0; box-shadow: inset 0 -8px rgba(0,0,0,0.08); }
+    .avatar-target .hair { position: absolute; left: 50%; top: 35px; transform: translateX(-50%); width: 82px; height: 42px; border-radius: 44px 44px 18px 18px; background: #243047; }
+    .avatar-target .eye { position: absolute; top: 72px; width: 7px; height: 7px; border-radius: 50%; background: #152033; z-index: 2; }
+    .avatar-target .eye.left { left: calc(50% - 18px); }
+    .avatar-target .eye.right { left: calc(50% + 12px); }
+    .avatar-target .smile { position: absolute; left: 50%; top: 91px; transform: translateX(-50%); width: 26px; height: 12px; border-bottom: 3px solid rgba(21,32,51,0.8); border-radius: 0 0 20px 20px; z-index: 2; }
+    .avatar-target .torso { position: absolute; left: 50%; top: 122px; transform: translateX(-50%); width: 132px; height: 104px; border-radius: 42px 42px 18px 18px; background: linear-gradient(180deg, #75d5ff, #3086bf); box-shadow: inset 0 -14px rgba(0,0,0,0.10); }
+    .avatar-target .sign-arm { position: absolute; top: 124px; width: 42px; height: 114px; border-radius: 24px; background: #e9c7a0; transform-origin: top center; z-index: 3; }
+    .avatar-target .sign-arm.left { left: 58px; transform: rotate(-44deg); }
+    .avatar-target .sign-arm.right { right: 58px; transform: rotate(44deg); }
+    .avatar-target .hand { position: absolute; width: 36px; height: 36px; border-radius: 50%; background: #e9c7a0; bottom: -5px; left: 3px; box-shadow: 0 0 0 4px rgba(142,230,161,0.12); }
+    .tech-strip { position: relative; z-index: 2; display: grid; grid-template-columns: 86px 1fr; gap: 10px; align-items: center; width: min(92%, 300px); margin-top: 10px; padding: 9px; border-radius: 16px; background: rgba(8,16,27,0.78); border: 1px solid rgba(255,255,255,0.10); }
+    .tech-strip img { width: 86px; height: 86px; object-fit: contain; border-radius: 12px; background: #f7fbff; filter: saturate(.78) contrast(.92) brightness(1.08); }
+    .tech-strip span { color: var(--muted); font-size: .82rem; line-height: 1.25; }
+    .avatar-copy { display: grid; gap: 10px; align-content: center; border-radius: 22px; padding: 16px; background: rgba(31,44,66,0.86); border: 1px solid rgba(255,255,255,0.09); }
+    .avatar-copy h3 { margin: 0; color: var(--text); }
+    .avatar-copy p { margin: 0; }
+    .term-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .term-chip { padding: 6px 9px; border-radius: 999px; color: #06121f; background: linear-gradient(135deg, #75d5ff, #8ee6a1); font-size: .82rem; font-weight: 900; }
+    .asl-note { width: 100%; border-radius: 16px; padding: 12px 14px; background: rgba(255,209,102,0.10); border: 1px solid rgba(255,209,102,0.24); color: var(--muted); font-size: .95rem; }
     .asl-note strong { color: var(--warn); }
+    @media (max-width: 760px) { .asl-demo { grid-template-columns: 1fr; } .avatar-frame { min-height: 260px; } }
     .generated-card { width: min(94%, 520px); min-height: 330px; padding: 20px; border-radius: 28px; background: radial-gradient(circle at 20% 10%, rgba(142,230,161,0.18), transparent 32%), linear-gradient(180deg, #263b5b, #101927); border: 1px solid rgba(117, 213, 255, 0.24); display: grid; grid-template-columns: 1fr; gap: 14px; }
     .generated-label { display: inline-flex; width: fit-content; padding: 6px 10px; border-radius: 999px; background: rgba(255,209,102,0.14); color: var(--warn); font-weight: 800; font-size: .82rem; border: 1px solid rgba(255,209,102,0.34); }
     .generated-main { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: center; }
@@ -213,11 +237,23 @@
       const terms = hits.map(v => v.term).join(', ') || 'fraction / part / whole';
       return `
         <div class="asl-demo" aria-label="Avatar ASL généré pour les mots anglais fraction part whole">
-          <img id="fractionGif" src="output_fraction.gif" alt="Avatar ASL technique généré à partir des mots anglais FRACTION PART WHOLE" />
-          <div class="asl-note">
-            <strong>Avatar ASL généré pour la démonstration.</strong><br>
-            Entrée anglaise utilisée pour cette démo : <code>FRACTION PART WHOLE</code>.<br>
-            Termes détectés : ${terms}. Cet exemple montre comment un concept de mathématique pourrait déclencher un soutien visuel.
+          <div class="avatar-frame">
+            <div class="avatar-target" aria-label="Avatar cible plus chaleureux">
+              <div class="halo"></div><div class="hair"></div><div class="head"></div><div class="eye left"></div><div class="eye right"></div><div class="smile"></div><div class="torso"></div><div class="sign-arm left"><div class="hand"></div></div><div class="sign-arm right"><div class="hand"></div></div>
+            </div>
+            <div class="tech-strip">
+              <img id="fractionGif" src="output_fraction.gif" alt="Avatar ASL technique généré à partir des mots anglais FRACTION PART WHOLE" />
+              <span>Animation ASL générée à partir des mots anglais utilisés dans la démonstration.</span>
+            </div>
+          </div>
+          <div class="avatar-copy">
+            <h3>Soutien visuel déclenché</h3>
+            <p>La phrase contient un concept de mathématique. Le système affiche un aperçu d’avatar et garde le vocabulaire important visible.</p>
+            <div class="term-chip-row" aria-label="Mots utilisés pour générer l'avatar"><span class="term-chip">FRACTION</span><span class="term-chip">PART</span><span class="term-chip">WHOLE</span></div>
+            <div class="asl-note">
+              <strong>Avatar ASL généré pour la démonstration.</strong><br>
+              Termes détectés : ${terms}. Cet exemple montre comment un concept de mathématique pourrait déclencher un soutien visuel.
+            </div>
           </div>
         </div>`;
     }
