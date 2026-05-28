@@ -32,11 +32,6 @@ jobs:
           cp spikes/001-avatar-demo-options/output_hello.gif _site/output_hello.gif
           cp spikes/001-avatar-demo-options/output_abc.gif _site/output_abc.gif
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
