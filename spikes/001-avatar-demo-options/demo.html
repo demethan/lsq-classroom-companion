@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LSQ Classroom Companion — Avatar Demo Spike</title>
+  <style>
+    :root {
+      --bg: #101722;
+      --panel: #172234;
+      --panel-2: #1f2c42;
+      --text: #eef4ff;
+      --muted: #a9b7cc;
+      --accent: #75d5ff;
+      --warn: #ffd166;
+      --danger: #ff7b7b;
+      --ok: #8ee6a1;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: radial-gradient(circle at top left, #1d3557 0, var(--bg) 38rem); color: var(--text); }
+    main { max-width: 1180px; margin: 0 auto; padding: 32px 20px 48px; }
+    header { margin-bottom: 24px; }
+    h1 { margin: 0 0 8px; font-size: clamp(1.9rem, 4vw, 3.4rem); letter-spacing: -0.04em; }
+    p { line-height: 1.55; color: var(--muted); }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(255, 209, 102, 0.16); color: var(--warn); border: 1px solid rgba(255, 209, 102, 0.45); font-weight: 700; }
+    .grid { display: grid; grid-template-columns: minmax(300px, 0.9fr) minmax(360px, 1.3fr); gap: 18px; }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+    .card { background: rgba(23, 34, 52, 0.92); border: 1px solid rgba(255,255,255,0.09); border-radius: 22px; padding: 20px; box-shadow: 0 18px 55px rgba(0,0,0,0.24); }
+    label { display: block; font-weight: 800; margin-bottom: 10px; }
+    textarea { width: 100%; min-height: 130px; border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 14px; background: #0d1420; color: var(--text); font-size: 1rem; resize: vertical; }
+    button { margin-top: 12px; width: 100%; border: 0; border-radius: 14px; padding: 13px 16px; background: linear-gradient(135deg, #5fd1ff, #8ee6a1); color: #06121f; font-weight: 900; font-size: 1rem; cursor: pointer; }
+    button:hover { filter: brightness(1.05); }
+    .sample-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .sample { background: var(--panel-2); color: var(--text); border: 1px solid rgba(255,255,255,0.10); }
+    .stage { min-height: 420px; display: flex; flex-direction: column; gap: 14px; }
+    .video-shell { flex: 1; min-height: 270px; display: grid; place-items: center; background: #08101b; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+    .video-shell img { max-width: min(100%, 520px); max-height: 360px; width: auto; height: auto; image-rendering: auto; }
+    .placeholder-avatar { width: min(92%, 420px); aspect-ratio: 1; border-radius: 28px; background: linear-gradient(180deg, #263b5b, #101927); position: relative; display: grid; place-items: center; overflow: hidden; }
+    .head { position: absolute; top: 42px; width: 82px; height: 82px; border-radius: 50%; background: #d9b78d; box-shadow: inset 0 -8px rgba(0,0,0,0.12); }
+    .body { position: absolute; top: 132px; width: 150px; height: 170px; border-radius: 50px 50px 22px 22px; background: #75d5ff; }
+    .arm { position: absolute; top: 145px; width: 44px; height: 155px; border-radius: 30px; background: #d9b78d; transform-origin: top center; animation: sign 1.2s ease-in-out infinite alternate; }
+    .arm.left { left: 96px; transform: rotate(22deg); }
+    .arm.right { right: 96px; animation-delay: .25s; transform: rotate(-22deg); }
+    @keyframes sign { from { transform: rotate(-28deg) translateY(4px); } to { transform: rotate(28deg) translateY(-16px); } }
+    .status { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .status div, .pill { background: var(--panel-2); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 11px; }
+    .status strong { display:block; font-size:.78rem; color: var(--muted); text-transform: uppercase; letter-spacing:.08em; margin-bottom:4px; }
+    .panels { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .panels, .status { grid-template-columns: 1fr; } }
+    ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
+    code { color: var(--accent); }
+    .danger { color: var(--danger); font-weight: 800; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="badge">Prototype only — not validated LSQ</span>
+      <h1>LSQ Classroom Companion avatar demo spike</h1>
+      <p>This page demonstrates interface mechanics: text in, vocabulary detection, and signing-support media out. It deliberately does not claim French-to-LSQ translation. Accuracy requires licensed LSQ content and LSQ expert validation.</p>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <label for="phrase">Classroom phrase</label>
+        <textarea id="phrase">Bonjour. Aujourd'hui nous allons parler des fractions et de l'énergie.</textarea>
+        <button id="run">Process demo phrase</button>
+        <div class="sample-row">
+          <button class="sample" data-text="HELLO">Sample: HELLO pipeline GIF</button>
+          <button class="sample" data-text="Les fractions comparent une partie avec un tout.">Sample: fractions</button>
+        </div>
+        <p><span class="danger">Caveat:</span> the animated sample is generated from a non-LSQ/fingerspelling-style engineering pipeline. For real classroom use, this panel would show validated LSQ clips/cards or approved avatar motion.</p>
+      </div>
+
+      <div class="card stage">
+        <div class="video-shell" id="mediaPanel">
+          <img id="demoGif" src="output_hello.gif" alt="Signing-like pipeline output generated during spike" />
+        </div>
+        <div class="status">
+          <div><strong>Input</strong><span id="inputStatus">French/text</span></div>
+          <div><strong>Intermediate</strong><span id="glossStatus">Vocabulary lookup</span></div>
+          <div><strong>Output</strong><span id="outputStatus">Generated sample GIF</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panels" style="margin-top:18px;">
+      <div class="card">
+        <h2>Detected educational vocabulary</h2>
+        <div id="vocab"></div>
+      </div>
+      <div class="card">
+        <h2>Demo trace</h2>
+        <ul id="trace"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const vocabMap = [
+      { pattern: /fraction|fractions/i, term: 'fraction', status: 'Needs validated LSQ media', subject: 'Math' },
+      { pattern: /énergie|energie|energy/i, term: 'énergie', status: 'Needs validated LSQ media', subject: 'Science' },
+      { pattern: /bonjour|hello/i, term: 'bonjour / HELLO', status: 'Engineering GIF available, not LSQ validation', subject: 'Greeting' },
+      { pattern: /partie|tout/i, term: 'partie / tout', status: 'Needs validated LSQ media', subject: 'Math' }
+    ];
+
+    function renderPlaceholder() {
+      return '<div class="placeholder-avatar" aria-label="Placeholder animated avatar"><div class="head"></div><div class="body"></div><div class="arm left"></div><div class="arm right"></div></div>';
+    }
+
+    function processPhrase(text) {
+      const hits = vocabMap.filter(v => v.pattern.test(text));
+      const vocab = document.getElementById('vocab');
+      vocab.innerHTML = hits.length ? '<ul>' + hits.map(v => `<li><strong>${v.term}</strong> — ${v.subject}; ${v.status}</li>`).join('') + '</ul>' : '<p>No demo vocabulary detected. Add approved LSQ terms to the vocabulary table.</p>';
+
+      const mediaPanel = document.getElementById('mediaPanel');
+      if (/^\s*hello\s*$/i.test(text)) {
+        mediaPanel.innerHTML = '<img id="demoGif" src="output_hello.gif" alt="Signing-like pipeline output generated during spike" />';
+        document.getElementById('outputStatus').textContent = 'Generated sample GIF';
+      } else {
+        mediaPanel.innerHTML = renderPlaceholder();
+        document.getElementById('outputStatus').textContent = 'Placeholder avatar panel';
+      }
+
+      document.getElementById('inputStatus').textContent = text.length > 60 ? text.slice(0, 60) + '…' : text;
+      document.getElementById('glossStatus').textContent = hits.length ? `${hits.length} demo term(s)` : 'No mapped terms';
+      document.getElementById('trace').innerHTML = [
+        'Text received from classroom UI.',
+        'Vocabulary detector scans for approved classroom terms.',
+        hits.length ? 'Known terms were found; production would load validated LSQ media.' : 'No known terms found; production would continue captions only.',
+        /^\s*hello\s*$/i.test(text) ? 'Displayed generated pipeline GIF from spike output_hello.gif.' : 'Displayed safe placeholder avatar because no validated LSQ media is attached.'
+      ].map(x => `<li>${x}</li>`).join('');
+    }
+
+    document.getElementById('run').addEventListener('click', () => processPhrase(document.getElementById('phrase').value));
+    document.querySelectorAll('.sample').forEach(btn => btn.addEventListener('click', () => {
+      document.getElementById('phrase').value = btn.dataset.text;
+      processPhrase(btn.dataset.text);
+    }));
+    processPhrase(document.getElementById('phrase').value);
+  </script>
+</body>
+</html>
