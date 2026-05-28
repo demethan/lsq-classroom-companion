@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr-CA">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LSQ Classroom Companion — Avatar Demo Spike</title>
+  <title>Compagnon de classe LSQ — prototype d’avatar</title>
   <style>
     :root {
       --bg: #101722;
@@ -56,42 +56,42 @@
 <body>
   <main>
     <header>
-      <span class="badge">Prototype only — not validated LSQ</span>
-      <h1>LSQ Classroom Companion avatar demo spike</h1>
-      <p>This page demonstrates interface mechanics: text in, vocabulary detection, and signing-support media out. It deliberately does not claim French-to-LSQ translation. Accuracy requires licensed LSQ content and LSQ expert validation.</p>
+      <span class="badge">Prototype seulement — LSQ non validée</span>
+      <h1>Compagnon de classe LSQ — prototype d’avatar</h1>
+      <p>Cette page démontre la mécanique de l’interface : texte en entrée, détection de vocabulaire et affichage d’un soutien visuel associé aux signes. Elle ne prétend pas traduire le français vers la LSQ. L’exactitude exige du contenu LSQ autorisé et une validation par des spécialistes de la LSQ.</p>
     </header>
 
     <section class="grid">
       <div class="card">
-        <label for="phrase">Classroom phrase</label>
-        <textarea id="phrase">Bonjour. Aujourd'hui nous allons parler des fractions et de l'énergie.</textarea>
-        <button id="run">Process demo phrase</button>
+        <label for="phrase">Phrase de classe</label>
+        <textarea id="phrase">Bonjour. Aujourd’hui, nous allons parler des fractions et de l’énergie.</textarea>
+        <button id="run">Traiter la phrase de démonstration</button>
         <div class="sample-row">
-          <button class="sample" data-text="HELLO">Sample: HELLO pipeline GIF</button>
-          <button class="sample" data-text="Les fractions comparent une partie avec un tout.">Sample: fractions</button>
+          <button class="sample" data-text="BONJOUR">Exemple : GIF technique</button>
+          <button class="sample" data-text="Les fractions comparent une partie avec un tout.">Exemple : fractions</button>
         </div>
-        <p><span class="danger">Caveat:</span> the animated sample is generated from a non-LSQ/fingerspelling-style engineering pipeline. For real classroom use, this panel would show validated LSQ clips/cards or approved avatar motion.</p>
+        <p><span class="danger">Mise en garde :</span> l’animation est produite par une chaîne technique non LSQ, de type épellation/pose, et sert uniquement à valider l’affichage. En usage réel, ce panneau présenterait des capsules LSQ, des cartes de signes ou des mouvements d’avatar approuvés.</p>
       </div>
 
       <div class="card stage">
         <div class="video-shell" id="mediaPanel">
-          <img id="demoGif" src="output_hello.gif" alt="Signing-like pipeline output generated during spike" />
+          <img id="demoGif" src="output_hello.gif" alt="Sortie animée technique générée pendant le prototype" />
         </div>
         <div class="status">
-          <div><strong>Input</strong><span id="inputStatus">French/text</span></div>
-          <div><strong>Intermediate</strong><span id="glossStatus">Vocabulary lookup</span></div>
-          <div><strong>Output</strong><span id="outputStatus">Generated sample GIF</span></div>
+          <div><strong>Entrée</strong><span id="inputStatus">Texte en français</span></div>
+          <div><strong>Intermédiaire</strong><span id="glossStatus">Recherche de vocabulaire</span></div>
+          <div><strong>Sortie</strong><span id="outputStatus">GIF technique généré</span></div>
         </div>
       </div>
     </section>
 
     <section class="panels" style="margin-top:18px;">
       <div class="card">
-        <h2>Detected educational vocabulary</h2>
+        <h2>Vocabulaire pédagogique détecté</h2>
         <div id="vocab"></div>
       </div>
       <div class="card">
-        <h2>Demo trace</h2>
+        <h2>Trace de démonstration</h2>
         <ul id="trace"></ul>
       </div>
     </section>
@@ -99,37 +99,37 @@
 
   <script>
     const vocabMap = [
-      { pattern: /fraction|fractions/i, term: 'fraction', status: 'Needs validated LSQ media', subject: 'Math' },
-      { pattern: /énergie|energie|energy/i, term: 'énergie', status: 'Needs validated LSQ media', subject: 'Science' },
-      { pattern: /bonjour|hello/i, term: 'bonjour / HELLO', status: 'Engineering GIF available, not LSQ validation', subject: 'Greeting' },
-      { pattern: /partie|tout/i, term: 'partie / tout', status: 'Needs validated LSQ media', subject: 'Math' }
+      { pattern: /fraction|fractions/i, term: 'fraction', status: 'Contenu LSQ validé requis', subject: 'Mathématique' },
+      { pattern: /énergie|energie|energy/i, term: 'énergie', status: 'Contenu LSQ validé requis', subject: 'Science' },
+      { pattern: /bonjour|hello/i, term: 'bonjour', status: 'GIF technique disponible; non validé en LSQ', subject: 'Salutation' },
+      { pattern: /partie|tout/i, term: 'partie / tout', status: 'Contenu LSQ validé requis', subject: 'Mathématique' }
     ];
 
     function renderPlaceholder() {
-      return '<div class="placeholder-avatar" aria-label="Placeholder animated avatar"><div class="head"></div><div class="body"></div><div class="arm left"></div><div class="arm right"></div></div>';
+      return '<div class="placeholder-avatar" aria-label="Avatar animé temporaire"><div class="head"></div><div class="body"></div><div class="arm left"></div><div class="arm right"></div></div>';
     }
 
     function processPhrase(text) {
       const hits = vocabMap.filter(v => v.pattern.test(text));
       const vocab = document.getElementById('vocab');
-      vocab.innerHTML = hits.length ? '<ul>' + hits.map(v => `<li><strong>${v.term}</strong> — ${v.subject}; ${v.status}</li>`).join('') + '</ul>' : '<p>No demo vocabulary detected. Add approved LSQ terms to the vocabulary table.</p>';
+      vocab.innerHTML = hits.length ? '<ul>' + hits.map(v => `<li><strong>${v.term}</strong> — ${v.subject}; ${v.status}</li>`).join('') + '</ul>' : '<p>Aucun vocabulaire de démonstration détecté. Ajouter les termes LSQ approuvés au tableau de vocabulaire.</p>';
 
       const mediaPanel = document.getElementById('mediaPanel');
-      if (/^\s*hello\s*$/i.test(text)) {
-        mediaPanel.innerHTML = '<img id="demoGif" src="output_hello.gif" alt="Signing-like pipeline output generated during spike" />';
-        document.getElementById('outputStatus').textContent = 'Generated sample GIF';
+      if (/^\s*(hello|bonjour)\s*$/i.test(text)) {
+        mediaPanel.innerHTML = '<img id="demoGif" src="output_hello.gif" alt="Sortie animée technique générée pendant le prototype" />';
+        document.getElementById('outputStatus').textContent = 'GIF technique généré';
       } else {
         mediaPanel.innerHTML = renderPlaceholder();
-        document.getElementById('outputStatus').textContent = 'Placeholder avatar panel';
+        document.getElementById('outputStatus').textContent = 'Avatar temporaire';
       }
 
       document.getElementById('inputStatus').textContent = text.length > 60 ? text.slice(0, 60) + '…' : text;
-      document.getElementById('glossStatus').textContent = hits.length ? `${hits.length} demo term(s)` : 'No mapped terms';
+      document.getElementById('glossStatus').textContent = hits.length ? `${hits.length} terme(s) de démonstration` : 'Aucun terme associé';
       document.getElementById('trace').innerHTML = [
-        'Text received from classroom UI.',
-        'Vocabulary detector scans for approved classroom terms.',
-        hits.length ? 'Known terms were found; production would load validated LSQ media.' : 'No known terms found; production would continue captions only.',
-        /^\s*hello\s*$/i.test(text) ? 'Displayed generated pipeline GIF from spike output_hello.gif.' : 'Displayed safe placeholder avatar because no validated LSQ media is attached.'
+        'Texte reçu par l’interface de classe.',
+        'Le détecteur de vocabulaire cherche les termes pédagogiques approuvés.',
+        hits.length ? 'Des termes connus ont été trouvés; la version de production chargerait du contenu LSQ validé.' : 'Aucun terme connu trouvé; la version de production continuerait avec les sous-titres seulement.',
+        /^\s*(hello|bonjour)\s*$/i.test(text) ? 'Affichage du GIF technique généré pendant le prototype.' : 'Affichage d’un avatar temporaire sécuritaire, car aucun contenu LSQ validé n’est attaché.'
       ].map(x => `<li>${x}</li>`).join('');
     }
 

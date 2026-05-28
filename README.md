@@ -69,14 +69,14 @@ Bench Prototype 0:
 
 No LSQ generation in this milestone. First make the pipe reliable.
 
-## Browser demo
+## Démonstration Web
 
-A stakeholder-safe static demo is published with GitHub Pages:
+Une démonstration statique sécuritaire pour les parties prenantes est publiée avec GitHub Pages :
 
 - https://demethan.github.io/lsq-classroom-companion/
-- Direct file path: https://demethan.github.io/lsq-classroom-companion/spikes/001-avatar-demo-options/demo.html
+- Chemin direct : https://demethan.github.io/lsq-classroom-companion/spikes/001-avatar-demo-options/demo.html
 
-The demo shows interface mechanics only: text input, vocabulary detection, and signing-support media display. It is not validated LSQ translation.
+La démonstration montre seulement la mécanique de l’interface : texte en entrée, détection de vocabulaire et affichage d’un soutien visuel associé aux signes. Elle ne constitue pas une traduction LSQ validée.
 
 ## Documentation
 
