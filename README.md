@@ -69,6 +69,14 @@ Bench Prototype 0:
 
 No LSQ generation in this milestone. First make the pipe reliable.
 
+## Browser demo
+
+A stakeholder-safe static demo is published with GitHub Pages:
+
+- https://demethan.github.io/lsq-classroom-companion/
+
+The demo shows interface mechanics only: text input, vocabulary detection, and signing-support media display. It is not validated LSQ translation.
+
 ## Documentation
 
 - `docs/project-working-document.md` — current project understanding

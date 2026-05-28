@@ -28,6 +28,18 @@ This does **not** validate LSQ translation quality. It proves only that the inte
 - `output_hello.gif` — rendered GIF for browser display.
 - `output_abc.pose` / `output_abc.gif` — earlier pipeline test output.
 
+## GitHub Pages
+
+This spike is published as a static GitHub Pages site from `.github/workflows/pages.yml`.
+
+Public URL:
+
+```text
+https://demethan.github.io/lsq-classroom-companion/
+```
+
+The workflow copies `demo.html` to `index.html` and publishes the browser assets needed by the page.
+
 ## Pipeline notes
 
 Environment:
