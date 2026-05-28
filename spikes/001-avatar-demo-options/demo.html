@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Compagnon de classe LSQ — prototype d’avatar</title>
+  <title>Compagnon de classe LSQ — démonstration</title>
   <style>
     :root {
       --bg: #101722;
@@ -88,10 +88,10 @@
 <body>
   <main>
     <header>
-      <span class="badge">Prototype seulement — LSQ non validée</span>
+      <span class="badge">Démonstration de concept</span>
       <h1>Compagnon de classe LSQ</h1>
       <p class="hero-copy">Un projet de soutien à l’accessibilité en classe pour aider un élève sourd utilisant la langue des signes québécoise (LSQ) à suivre l’enseignement donné en français par un enseignant non signeur.</p>
-      <p class="hero-copy">Cette page présente le besoin, l’objectif, le résultat visé et une première démonstration technique. Elle ne prétend pas traduire le français vers la LSQ. L’exactitude exige du contenu LSQ autorisé et une validation par des spécialistes de la LSQ.</p>
+      <p class="hero-copy">Cette page présente le besoin, l’objectif, le résultat visé et une première démonstration de l’expérience souhaitée : écouter la classe, repérer le vocabulaire important et afficher un soutien visuel utile à l’élève.</p>
     </header>
 
     <section class="plan-grid" aria-label="Résumé du projet">
@@ -107,22 +107,22 @@
 
       <article class="card plan-card">
         <h2>L’objectif</h2>
-        <p>Créer un compagnon de classe qui améliore l’accès à l’enseignement sans remplacer un interprète professionnel ni les spécialistes LSQ.</p>
+        <p>Créer un compagnon de classe qui améliore l’accès à l’enseignement et donne à l’élève plus d’outils pour suivre le cours en temps réel.</p>
         <ul>
           <li>Afficher des sous-titres français en direct.</li>
           <li>Détecter les termes pédagogiques importants.</li>
-          <li>Présenter des cartes, capsules ou signes LSQ validés pour le vocabulaire clé.</li>
+          <li>Présenter des cartes, capsules ou signes pour le vocabulaire clé.</li>
           <li>Produire une transcription et un résumé révisable par l’enseignant.</li>
         </ul>
       </article>
 
       <article class="card plan-card">
         <h2>Le résultat attendu</h2>
-        <p>À terme, l’élève dispose d’un affichage clair pendant le cours et d’un soutien après la classe, pendant que l’école conserve le contrôle des données et du contenu LSQ utilisé.</p>
+        <p>À terme, l’élève dispose d’un affichage clair pendant le cours et d’un soutien après la classe, pendant que l’école conserve le contrôle des données et du contenu utilisé.</p>
         <ul>
           <li>Une application Web utilisable sur l’ordinateur de classe et le tableau interactif.</li>
           <li>Un traitement local ou centralisé sur serveur scolaire, lorsque possible.</li>
-          <li>Une bibliothèque LSQ approuvée avec source, droits, validation et statut.</li>
+          <li>Une bibliothèque de vocabulaire et de médias organisée par matière, niveau scolaire et source.</li>
         </ul>
       </article>
     </section>
@@ -132,29 +132,29 @@
       <div class="timeline">
         <div class="step">
           <h3>Prototype 0 — Canal audio et sous-titres</h3>
-          <p>Capturer le microphone de l’enseignant dans le navigateur, transmettre l’audio au serveur, transcrire le français en direct et afficher les sous-titres. À cette étape, il n’y a pas encore de sortie LSQ : on vérifie d’abord que le tuyau technique est fiable.</p>
+          <p>Capturer le microphone de l’enseignant dans le navigateur, transmettre l’audio au serveur, transcrire le français en direct et afficher les sous-titres. À cette étape, on vérifie d’abord que le tuyau technique est fiable.</p>
         </div>
         <div class="step">
-          <h3>Prototype 1 — Soutien au vocabulaire LSQ</h3>
-          <p>Ajouter une liste limitée de vocabulaire en mathématique ou en science, détecter les termes dans la transcription et afficher des cartes ou capsules LSQ validées. Chaque élément doit conserver sa source, ses droits d’utilisation, son validateur et son statut.</p>
+          <h3>Prototype 1 — Soutien au vocabulaire</h3>
+          <p>Ajouter une liste limitée de vocabulaire en mathématique ou en science, détecter les termes dans la transcription et afficher des cartes, capsules ou animations liées au cours.</p>
         </div>
         <div class="step">
           <h3>Prototype 2 — Révision par l’enseignant</h3>
           <p>Permettre à l’enseignant de revoir la transcription, corriger le résumé, approuver les notes de cours et préparer du soutien pour l’élève après la classe.</p>
         </div>
         <div class="step">
-          <h3>Étape ultérieure — Avatar ou génération LSQ validée</h3>
-          <p>Explorer un avatar ou une génération de signes seulement après validation linguistique, droits de contenu clairs et participation de personnes compétentes en LSQ. Un avatar beau mais inexact serait nuisible; la précision passe avant le spectacle.</p>
+          <h3>Étape ultérieure — Avatar et soutien signé</h3>
+          <p>Explorer un avatar ou une génération de signes pour rendre certains concepts plus visuels, en commençant par un vocabulaire limité et utile en classe.</p>
         </div>
       </div>
     </section>
 
     <section class="card callout" style="margin-top:18px;">
-      <h2>Limites et principes de sécurité</h2>
+      <h2>Principes du projet</h2>
       <ul>
-        <li>Ce projet n’est pas un remplacement d’un interprète LSQ professionnel.</li>
-        <li>Aucune vidéo publique LSQ ne doit être utilisée comme donnée de produit ou d’entraînement sans permission explicite.</li>
-        <li>L’audio brut de classe ne devrait pas être conservé par défaut.</li>
+        <li>Le projet vise à ajouter un soutien visuel et pédagogique dans la classe.</li>
+        <li>Le contenu utilisé devra être organisé, traçable et adapté au contexte scolaire.</li>
+        <li>L’audio de classe ne devrait pas être conservé par défaut.</li>
         <li>Les transcriptions, résumés et accès doivent respecter les règles de confidentialité du milieu scolaire.</li>
       </ul>
     </section>
@@ -169,7 +169,7 @@
           <button class="sample" data-text="BONJOUR">Exemple : GIF technique</button>
           <button class="sample" data-text="Les fractions comparent une partie avec un tout.">Exemple : fractions — avatar ASL</button>
         </div>
-        <p><span class="danger">Mise en garde :</span> les éléments visuels générés ici servent uniquement à démontrer le parcours produit. En usage réel, ce panneau présenterait des capsules LSQ, des cartes de signes ou des mouvements d’avatar validés par des spécialistes LSQ.</p>
+        <p><span class="danger">Note :</span> les éléments visuels ci-dessous montrent le type d’expérience que nous voulons offrir. Ils servent à illustrer le parcours : phrase entendue, vocabulaire repéré, soutien visuel affiché.</p>
       </div>
 
       <div class="card stage">
@@ -198,10 +198,10 @@
 
   <script>
     const vocabMap = [
-      { pattern: /fraction|fractions/i, term: 'fraction / fraction', status: 'Avatar ASL généré; LSQ validée requise', subject: 'Mathématique' },
-      { pattern: /énergie|energie|energy/i, term: 'énergie / energy', status: 'Contenu LSQ validé requis', subject: 'Science' },
-      { pattern: /bonjour|hello/i, term: 'bonjour / hello', status: 'GIF technique disponible; non validé en LSQ', subject: 'Salutation' },
-      { pattern: /partie|tout|part|whole/i, term: 'partie / part; tout / whole', status: 'Avatar ASL généré; LSQ validée requise', subject: 'Mathématique' }
+      { pattern: /fraction|fractions/i, term: 'fraction / fraction', status: 'Avatar ASL généré pour la démo', subject: 'Mathématique' },
+      { pattern: /énergie|energie|energy/i, term: 'énergie / energy', status: 'Média à ajouter', subject: 'Science' },
+      { pattern: /bonjour|hello/i, term: 'bonjour / hello', status: 'GIF technique disponible', subject: 'Salutation' },
+      { pattern: /partie|tout|part|whole/i, term: 'partie / part; tout / whole', status: 'Avatar ASL généré pour la démo', subject: 'Mathématique' }
     ];
 
 
@@ -215,9 +215,9 @@
         <div class="asl-demo" aria-label="Avatar ASL généré pour les mots anglais fraction part whole">
           <img id="fractionGif" src="output_fraction.gif" alt="Avatar ASL technique généré à partir des mots anglais FRACTION PART WHOLE" />
           <div class="asl-note">
-            <strong>Avatar ASL généré — pas une traduction LSQ.</strong><br>
+            <strong>Avatar ASL généré pour la démonstration.</strong><br>
             Entrée anglaise utilisée pour cette démo : <code>FRACTION PART WHOLE</code>.<br>
-            Termes détectés : ${terms}. Pour le produit final, il faudra remplacer cet exemple par du contenu LSQ approuvé.
+            Termes détectés : ${terms}. Cet exemple montre comment un concept de mathématique pourrait déclencher un soutien visuel.
           </div>
         </div>`;
     }
@@ -225,8 +225,8 @@
     function renderGeneratedConcept(hits) {
       const terms = hits.map(v => v.term).join(', ') || 'vocabulaire';
       return `
-        <div class="generated-card" aria-label="Visualisation générée non validée LSQ">
-          <span class="generated-label">Visualisation générée — non validée LSQ</span>
+        <div class="generated-card" aria-label="Visualisation générée">
+          <span class="generated-label">Visualisation générée</span>
           <div class="generated-main">
             <div class="concept-panel">
               <h3>Concept détecté</h3>
@@ -238,8 +238,8 @@
           </div>
           <ul class="generated-steps">
             <li>Termes repérés : ${terms}</li>
-            <li>La production réelle chargerait ici des médias LSQ approuvés.</li>
-            <li>Cette animation démontre la génération d’un support visuel, pas une traduction LSQ.</li>
+            <li>La version complète chargerait ici le média le plus utile pour le cours.</li>
+            <li>Cette animation démontre la génération d’un support visuel.</li>
           </ul>
         </div>`;
     }
@@ -247,7 +247,7 @@
     function processPhrase(text) {
       const hits = vocabMap.filter(v => v.pattern.test(text));
       const vocab = document.getElementById('vocab');
-      vocab.innerHTML = hits.length ? '<ul>' + hits.map(v => `<li><strong>${v.term}</strong> — ${v.subject}; ${v.status}</li>`).join('') + '</ul>' : '<p>Aucun vocabulaire de démonstration détecté. Ajouter les termes LSQ approuvés au tableau de vocabulaire.</p>';
+      vocab.innerHTML = hits.length ? '<ul>' + hits.map(v => `<li><strong>${v.term}</strong> — ${v.subject}; ${v.status}</li>`).join('') + '</ul>' : '<p>Aucun vocabulaire de démonstration détecté. Ajouter les termes pertinents au tableau de vocabulaire.</p>';
 
       const mediaPanel = document.getElementById('mediaPanel');
       if (/^\s*(hello|bonjour)\s*$/i.test(text)) {
@@ -269,8 +269,8 @@
       document.getElementById('trace').innerHTML = [
         'Texte reçu par l’interface de classe.',
         'Le détecteur de vocabulaire cherche les termes pédagogiques approuvés.',
-        hits.length ? 'Des termes connus ont été trouvés; la version de production chargerait du contenu LSQ validé.' : 'Aucun terme connu trouvé; la version de production continuerait avec les sous-titres seulement.',
-        /^\s*(hello|bonjour)\s*$/i.test(text) ? 'Affichage du GIF technique généré pendant le prototype.' : (isFractionSample(text) ? 'Affichage d’un avatar ASL généré à partir des mots anglais FRACTION PART WHOLE; ce n’est pas une traduction LSQ.' : 'Affichage d’une visualisation générée pour démontrer le résultat attendu; elle ne constitue pas une traduction LSQ.')
+        hits.length ? 'Des termes connus ont été trouvés; la version complète chargerait le soutien visuel approprié.' : 'Aucun terme connu trouvé; la version de production continuerait avec les sous-titres seulement.',
+        /^\s*(hello|bonjour)\s*$/i.test(text) ? 'Affichage du GIF technique généré pendant le prototype.' : (isFractionSample(text) ? 'Affichage d’un avatar ASL généré à partir des mots anglais FRACTION PART WHOLE pour illustrer le concept.' : 'Affichage d’une visualisation générée pour démontrer le résultat attendu.')
       ].map(x => `<li>${x}</li>`).join('');
     }
 
